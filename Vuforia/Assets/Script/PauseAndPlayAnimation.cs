@@ -6,36 +6,22 @@ using UnityEngine.UI;
 
 public class PauseAndPlayAnimation : MonoBehaviour
 {
-    private TextMeshProUGUI ButtonTitle;
+    private TextMeshProUGUI _buttonTitle;
     private void Start()
     {
-        ButtonTitle = GetComponentInChildren<TextMeshProUGUI>();
+        _buttonTitle = GetComponentInChildren<TextMeshProUGUI>();
     }
-    private bool IsPlaing()
+    public void SiwtchPauseOrPlay()
     {
-        if (ButtonTitle.text == "Pause")
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-        
-    }
-    public void SiwtchPauseOrPlay(AudioSource Music)
-    {
-        if (IsPlaing())
+        if (Time.timeScale == 1)
         {
             Time.timeScale = 0f;
-            Music.Pause();
-            ButtonTitle.text = "Play";
+            _buttonTitle.text = "Play";
         }
         else
         {
             Time.timeScale = 1f;
-            Music.Play();
-            ButtonTitle.text = "Pause";
+            _buttonTitle.text = "Pause";
         }
     }
 }
