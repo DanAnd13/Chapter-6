@@ -19,12 +19,9 @@ public class SwitchingMusic : MonoBehaviour
         {
             _musicIndex = 0;
         }
-        SaveMusicIndex();
-        if (CharacterMusic.isPlaying)
-        {
-            PlayOrPauseMusic();
-        }
-        
+        SaveAndPlay();
+
+
     }
     public void BackwardMusic()
     {
@@ -33,11 +30,7 @@ public class SwitchingMusic : MonoBehaviour
         {
             _musicIndex = _musicResources.Musics.Length - 1;
         }
-        SaveMusicIndex();
-        if (CharacterMusic.isPlaying)
-        {
-            PlayOrPauseMusic();
-        }
+        SaveAndPlay();
     }
     public void PlayOrPauseMusic()
     {
@@ -53,6 +46,14 @@ public class SwitchingMusic : MonoBehaviour
             {
                 CharacterMusic.Pause();
             }
+        }
+    }
+    private void SaveAndPlay()
+    {
+        SaveMusicIndex();
+        if (CharacterMusic.isPlaying)
+        {
+            PlayOrPauseMusic();
         }
     }
     private void SaveMusicIndex()

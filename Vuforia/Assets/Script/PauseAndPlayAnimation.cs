@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PauseAndPlayAnimation : MonoBehaviour
 {
     private TextMeshProUGUI _buttonTitle;
-    private void Start()
+    private void Awake()
     {
         _buttonTitle = GetComponentInChildren<TextMeshProUGUI>();
     }
@@ -15,13 +15,16 @@ public class PauseAndPlayAnimation : MonoBehaviour
     {
         if (Time.timeScale == 1)
         {
-            Time.timeScale = 0f;
-            _buttonTitle.text = "Play";
+            PauseAnimationAndRenameButton(0, "Play");
         }
         else
         {
-            Time.timeScale = 1f;
-            _buttonTitle.text = "Pause";
+            PauseAnimationAndRenameButton(1, "Pause");
         }
+    }
+    private void PauseAnimationAndRenameButton(int timeScale, string buttonTitle)
+    {
+        Time.timeScale = timeScale;
+        _buttonTitle.text = buttonTitle;
     }
 }
